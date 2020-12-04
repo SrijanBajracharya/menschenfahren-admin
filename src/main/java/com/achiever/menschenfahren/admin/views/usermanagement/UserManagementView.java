@@ -108,6 +108,7 @@ public class UserManagementView extends Div {
 
     }
 
+    /** Fetch all users. **/
     private List<UserDto> getItems() {
         return this.userService.getAllUsers();
     }

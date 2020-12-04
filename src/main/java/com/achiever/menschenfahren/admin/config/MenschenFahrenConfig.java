@@ -11,10 +11,11 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class MenschenFahrenConfig extends BaseConfig {
 
+    /** Configuration for achiever service. **/
     private AchieverServiceConfig      achieverService;
-
+    /** End point config for user service. **/
     private UserServiceEndpointConfig  userServiceEndpoints;
-
+    /** End point config for event service. **/
     private EventServiceEndpointConfig eventServiceEndpoints;
 
     @Override
