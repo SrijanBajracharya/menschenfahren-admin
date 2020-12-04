@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BaseConfig implements ConfigValidation {
 
+    /**Prefix for the base config.**/
     public static final String PREFIX = "menschen";
 
     @Override
