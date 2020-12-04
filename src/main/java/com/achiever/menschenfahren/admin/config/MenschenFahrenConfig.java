@@ -12,11 +12,13 @@ import lombok.ToString;
 public class MenschenFahrenConfig extends BaseConfig {
 
     /** Configuration for achiever service. **/
-    private AchieverServiceConfig      achieverService;
+    private AchieverServiceConfig          achieverService;
     /** End point config for user service. **/
-    private UserServiceEndpointConfig  userServiceEndpoints;
+    private UserServiceEndpointConfig      userServiceEndpoints;
     /** End point config for event service. **/
-    private EventServiceEndpointConfig eventServiceEndpoints;
+    private EventServiceEndpointConfig     eventServiceEndpoints;
+    /** End point config for event type service. **/
+    private EventTypeServiceEndpointConfig eventTypeServiceEndpoints;
 
     @Override
     public void validate() {
@@ -39,6 +41,14 @@ public class MenschenFahrenConfig extends BaseConfig {
         private String events;
         /** The endpoint for the event **/
         private String event;
+    }
+
+    @Data
+    public static class EventTypeServiceEndpointConfig {
+        /** The endpoint for the event types. **/
+        private String eventTypes;
+        /** The endpoint for the event type. **/
+        private String eventType;
     }
 
 }

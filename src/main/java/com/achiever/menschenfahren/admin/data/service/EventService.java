@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
@@ -24,6 +25,7 @@ public class EventService extends AbstractBackendService {
 
     private final String eventsServiceEndpoint;
 
+    @Autowired
     public EventService(@NonNull final MenschenFahrenConfig appConfig) {
         super(appConfig);
         final var endPointConfig = appConfig.getEventServiceEndpoints();
