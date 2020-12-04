@@ -72,7 +72,7 @@ public class AddEventTypeView extends Div {
 
     /**
      * Listener which check for display name validation and enables/disable save button.
-     * 
+     *
      * @param event
      */
     private void nameUpdated(@Nullable final ComponentValueChangeEvent<TextField, String> event) {
@@ -91,7 +91,7 @@ public class AddEventTypeView extends Div {
 
     /**
      * Creates form layout.
-     * 
+     *
      * @return
      */
     private Component createFormLayout() {
@@ -135,7 +135,7 @@ public class AddEventTypeView extends Div {
 
     /**
      * Validation error.
-     * 
+     *
      * @param binder
      */
     private void validationError(final Binder<EventTypeCreateDto> binder) {
@@ -147,14 +147,13 @@ public class AddEventTypeView extends Div {
 
     /**
      * Validates and tries to save the event type.
-     * 
+     *
      * @param binder
      * @param request
      */
     private void validateAndSave(@Nonnull final Binder<EventTypeCreateDto> binder, @Nonnull final EventTypeCreateDto request) {
         if (binder.writeBeanIfValid(request)) {
             try {
-                System.err.println("before createEventType");
                 final EventTypeDto response = this.eventTypeService.createEventType(request);
                 if (response != null) {
                     Notification.show("Event Type successfully added.");
@@ -171,7 +170,7 @@ public class AddEventTypeView extends Div {
 
     /**
      * Creates page title
-     * 
+     *
      * @return
      */
     private Component createTitle() {
@@ -180,7 +179,7 @@ public class AddEventTypeView extends Div {
 
     /**
      * Creates Button layout containing save and cancel button.
-     * 
+     *
      * @return
      */
     private Component createButtonLayout() {
