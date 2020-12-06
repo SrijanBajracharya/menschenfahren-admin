@@ -2,14 +2,18 @@ package com.achiever.menschenfahren.admin.views.main;
 
 import java.util.Optional;
 
+import com.achiever.menschenfahren.admin.views.addeventtype.AddEventTypeView;
+import com.achiever.menschenfahren.admin.views.dashboard.DashboardView;
+import com.achiever.menschenfahren.admin.views.events.EventsView;
+import com.achiever.menschenfahren.admin.views.usermanagement.UserManagementView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -19,12 +23,6 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.Theme;
-import com.achiever.menschenfahren.admin.views.main.MainView;
-import com.achiever.menschenfahren.admin.views.dashboard.DashboardView;
-import com.achiever.menschenfahren.admin.views.usermanagement.UserManagementView;
-import com.achiever.menschenfahren.admin.views.events.EventsView;
-import com.achiever.menschenfahren.admin.views.addeventtype.AddEventTypeView;
 
 /**
  * The main view is a top-level placeholder for other views.
@@ -34,8 +32,10 @@ import com.achiever.menschenfahren.admin.views.addeventtype.AddEventTypeView;
 @PWA(name = "User Admin", shortName = "User Admin", enableInstallPrompt = false)
 public class MainView extends AppLayout {
 
-    private final Tabs menu;
-    private H1 viewTitle;
+    private static final long serialVersionUID = -5907921194998028691L;
+
+    private final Tabs        menu;
+    private H1                viewTitle;
 
     public MainView() {
         setPrimarySection(Section.DRAWER);
@@ -84,9 +84,8 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[]{createTab("Dashboard", DashboardView.class),
-                createTab("User Management", UserManagementView.class), createTab("Events", EventsView.class),
-                createTab("Add Event Type", AddEventTypeView.class)};
+        return new Tab[] { createTab("Dashboard", DashboardView.class), createTab("User Management", UserManagementView.class),
+                createTab("Events", EventsView.class), createTab("Add Event Type", AddEventTypeView.class) };
     }
 
     private static Tab createTab(String text, Class<? extends Component> navigationTarget) {
@@ -104,8 +103,7 @@ public class MainView extends AppLayout {
     }
 
     private Optional<Tab> getTabForComponent(Component component) {
-        return menu.getChildren().filter(tab -> ComponentUtil.getData(tab, Class.class).equals(component.getClass()))
-                .findFirst().map(Tab.class::cast);
+        return menu.getChildren().filter(tab -> ComponentUtil.getData(tab, Class.class).equals(component.getClass())).findFirst().map(Tab.class::cast);
     }
 
     private String getCurrentPageTitle() {
