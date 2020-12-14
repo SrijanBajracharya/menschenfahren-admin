@@ -34,10 +34,21 @@ public class UserService extends AbstractBackendService {
 
     }
 
+    /**
+     * Get all users both active and deactivated user.
+     * 
+     * @return
+     */
     public List<UserDto> getAllUsers() {
         return getAllRequest(true);
     }
 
+    /**
+     * Get all user based on the voided filter.
+     *
+     * @param alsoVoided
+     * @return
+     */
     private List<UserDto> getAllRequest(final boolean alsoVoided) {
         List<UserDto> result = new ArrayList<>();
         try {
@@ -51,6 +62,15 @@ public class UserService extends AbstractBackendService {
             handleException(e);
         }
         return result;
+    }
+
+    /**
+     * Returns the size of active users.
+     *
+     * @return
+     */
+    public int getUserSize() {
+        return getAllRequest(false).size();
     }
 
     private static class UserResponse extends DataResponse<List<UserDto>> {

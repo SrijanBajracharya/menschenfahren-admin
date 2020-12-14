@@ -33,10 +33,24 @@ public class EventService extends AbstractBackendService {
         this.eventsServiceEndpoint = StringUtils.prependIfMissing(endPointConfig.getEvents(), "/");
     }
 
+    /**
+     * Get all events.
+     *
+     * @return
+     */
     public List<EventDto> getEvents() {
         return getAllRequest(false, false);
     }
 
+    /**
+     * Returns all events based on alsovoided and alsoPrivate filter.
+     *
+     * @param alsoVoided
+     *            Flag for event to be voided.
+     * @param alsoPrivate
+     *            Flag for event to be private.
+     * @return
+     */
     private List<EventDto> getAllRequest(final boolean alsoVoided, final boolean alsoPrivate) {
         List<EventDto> result = new ArrayList<>();
         try {
@@ -51,6 +65,15 @@ public class EventService extends AbstractBackendService {
             handleException(e);
         }
         return result;
+    }
+
+    /**
+     * Returns non voided including private events size.
+     * 
+     * @return
+     */
+    public int getEventSize() {
+        return getAllRequest(false, true).size();
     }
 
     private static class EventsResponse extends DataResponse<List<EventDto>> {

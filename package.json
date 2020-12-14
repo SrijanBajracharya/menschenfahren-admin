@@ -47,7 +47,8 @@
     "@vaadin/vaadin-rich-text-editor": "1.2.2",
     "lit-element": "^2.2.1",
     "chance": "1.1.7",
-    "open": "^7.2.1"
+    "open": "^7.2.1",
+    "@polymer/paper-ripple": "3.0.2"
   },
   "devDependencies": {
     "webpack": "4.42.0",
@@ -108,7 +109,8 @@
       "@vaadin/vaadin-rich-text-editor": "1.2.2",
       "lit-element": "^2.2.1",
       "chance": "1.1.7",
-      "open": "^7.2.1"
+      "open": "^7.2.1",
+      "@polymer/paper-ripple": "3.0.2"
     },
     "devDependencies": {
       "webpack-babel-multi-target-plugin": "2.3.3",
@@ -122,6 +124,6 @@
       "webpack-dev-server": "3.10.3",
       "chokidar": "^3.4.0"
     },
-    "hash": "144f5f7c5782193d9c6b42752819b5c0acf0796b3d668e2f88f7679393e59805"
+    "hash": "30ef228bb2525af4bc3eb215abfe486c3ce63844bc05500de7f45c7ec1cb875b"
   }
 }

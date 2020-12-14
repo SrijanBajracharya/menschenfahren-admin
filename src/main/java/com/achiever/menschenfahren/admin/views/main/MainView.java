@@ -10,10 +10,16 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.contextmenu.MenuItem;
+import com.vaadin.flow.component.contextmenu.SubMenu;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.menubar.MenuBar;
+import com.vaadin.flow.component.menubar.MenuBarVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -51,20 +57,38 @@ public class MainView extends AppLayout {
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
-        layout.add(new DrawerToggle());
+
+        DrawerToggle drawerToggle = new DrawerToggle();
+        drawerToggle.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        layout.add(drawerToggle);
         viewTitle = new H1();
         layout.add(viewTitle);
-        layout.add(new Image("images/user.svg", "Avatar"));
+
+        MenuBar userMenu = new MenuBar();
+        userMenu.addClassName("user-menu");
+        userMenu.addThemeVariants(MenuBarVariant.LUMO_ICON);
+        MenuItem menuItem = userMenu.addItem(new Image("images/user.svg", "Avatar"));
+        SubMenu userSubMenu = menuItem.getSubMenu();
+
+        VerticalLayout vLayoutUser = new VerticalLayout();
+        Button buttonSignOut = new Button("Sign Out");
+        vLayoutUser.add(buttonSignOut);
+
+        userSubMenu.add(vLayoutUser);
+
+        layout.add(userMenu);
+
+        layout.expand(viewTitle);
         return layout;
     }
 
     private Component createDrawerContent(Tabs menu) {
         VerticalLayout layout = new VerticalLayout();
-        layout.setSizeFull();
+        // layout.setSizeFull();
         layout.setPadding(false);
         layout.setSpacing(false);
         layout.getThemeList().set("spacing-s", true);
-        layout.setAlignItems(FlexComponent.Alignment.STRETCH);
+        // layout.setAlignItems(FlexComponent.Alignment.STRETCH);
         HorizontalLayout logoLayout = new HorizontalLayout();
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
